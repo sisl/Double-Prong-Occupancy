@@ -20,7 +20,7 @@ generate_data.sh
 ```
 
 ## Training
-Run the following script to train the model:
+Run the following script from CODES_prediction/double_prong_model/ directory to train the model:
 ```
 train.sh
 ```
