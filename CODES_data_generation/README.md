@@ -4,4 +4,4 @@ To generate the data from LiDAR to evidential grids, please run the following sc
 ```
 generate_data.sh
 ```
-See the relevant portions of the codes to modify any relevant parameters
+See the relevant portions of the codes to modify any relevant parameters.
