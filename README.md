@@ -14,11 +14,15 @@ The LiDAR data used in the experiments are obtained from [Waymo](https://waymo.c
 - hickle (3.4.5)
 
 ## Data preprocessing 
-To generate the evidential grids, please run the following script from the /CODES_data_generation directory: 
-
+To generate the evidential grids, please run the following script from the CODES_data_generation/ directory: 
 ```
 generate_data.sh
 ```
 
-
+## Training
+Run the following script to train the model:
+```
+train.sh
+```
+The input arguments can be modified in the train.sh script to change the number of gpus used for training and the output file name. 
 
