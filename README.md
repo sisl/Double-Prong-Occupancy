@@ -1,5 +1,6 @@
 # Double-Prong-Occupancy
 Implementation of double-prong ConvLSTM model for occupancy grid prediction as in "Double-Prong ConvLSTM for Spatiotemporal Occupancy Prediction in Dynamic Environments" ([arXiv](https://arxiv.org/abs/2011.09045)) by Maneekwan Toyungyernsub, Masha Itkina, Ransalu Senanayake, and Mykel J. Kochenderfer. Accepted to the IEEE The International Conference on Robotics and Automation (ICRA), Xi'an, 2021.
+
 <img src="fig_archi.gif" width="600">
 
 ## Dataset
