@@ -1,5 +1,7 @@
 import tensorflow as tf 
 from waymo_open_dataset import dataset_pb2 as open_dataset
+from waymo_open_dataset.utils import box_utils
+from waymo_open_dataset.utils import frame_utils 
 
 def load_dataset(filename):
 
@@ -43,3 +45,24 @@ def get_target_labels_dict_frames(frames, last_frame_index, first_frame_index = 
 			target_label_dict[label_id][frame_index] = laser_label
 
 	return target_label_dict
+
+def get_points_in_box(points, points_w_intensity, box):
+        is_points_in_box = box_utils.is_within_box_3d(points, box) # is a tf.tensor
+        is_points_in_box = is_points_in_box.numpy()
+        is_points_in_box = is_points_in_box.reshape(-1)
+        points = points.numpy()
+
+        points_in_box = points[is_points_in_box, :]
+        points_w_intensity_in_box = points_w_intensity[is_points_in_box, :]
+
+        return points_in_box, points_w_intensity_in_box # np array of all points in the box N x 3
+
+# Based on waymo_open_dataset 
+def get_lidar(frames, frame_index):
+        (range_images, camera_projections, range_image_top_pose) = frame_utils.parse_range_image_and_camera_projection(frames[frame_index])
+
+        points, cp_points = frame_utils.convert_range_image_to_point_cloud(frames[frame_index],
+                range_images, camera_projections, range_image_top_pose)
+        intensity_top_lidar_r0 = get_intensity(range_images[open_dataset.LaserName.TOP][0])
+
+        return points, intensity_top_lidar_r0
